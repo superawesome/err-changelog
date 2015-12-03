@@ -12,7 +12,7 @@ class Changelog(BotPlugin):
         data = {
                 'criticality': 2,
                 'unix_timestamp': int(time.time()),
-                'category': 'user',
+                'category': 'irc',
                 'description': msg.frm.nick + ': ' + args
         }
         headers = {
