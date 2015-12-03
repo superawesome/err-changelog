@@ -1,0 +1,9 @@
+[Core]
+Name = Changelog
+Module = Changelog
+
+[Python]
+Version = 2+
+
+[Documentation]
+Description = Plugin to read/write from the infra changelog app
