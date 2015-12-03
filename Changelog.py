@@ -10,14 +10,13 @@ class Changelog(BotPlugin):
         # -d "{\"criticality\": 2, \"unix_timestamp\": $WHEN, \"category\": \"puppet\", \"description\": \"$REPO; $REV; $WHODUNIT; $i\"}"
 
         data = {
-                'from': msg.frm.nick,
                 'criticality': 2,
                 'unix_timestamp': int(time.time()),
                 'category': 'user',
-                'description': args
+                'description': msg.frm.nick + ': ' + args
         }
         headers = {
                 'Content-Type': 'application/json'
         }
         r = requests.post("https://changelog.allizom.org/api/events", headers=headers, json=data)
-        return "changelog: from: %s, crit: %d, time: %d, cat: %s, desc: %s" % (data['from'], data['criticality'], data['unix_timestamp'], data['category'], data['description'])
+        return "changelog: from: %s, crit: %d, time: %d, cat: %s, desc: %s" % (msg.frm.nick, data['criticality'], data['unix_timestamp'], data['category'], data['description'])
