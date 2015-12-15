@@ -14,7 +14,7 @@ class Changelog(BotPlugin):
                 'criticality': 2,
                 'unix_timestamp': int(time.time()),
                 'category': 'irc',
-                'description': msg.frm.nick + ': ' + match
+                'description': msg.frm.nick + ': ' + match.string
         }
         headers = {
                 'Content-Type': 'application/json'
