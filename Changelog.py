@@ -20,3 +20,12 @@ class Changelog(BotPlugin):
         }
         r = requests.post("https://changelog.allizom.org/api/events", headers=headers, json=data)
         return "changelog: from: %s, crit: %d, time: %d, cat: %s, desc: %s" % (msg.frm.nick, data['criticality'], data['unix_timestamp'], data['category'], data['description'])
+
+
+    def check_changelog(self):
+        self.log.debug("This is where I should be checking the changelog web app and spewing stuff into #cl")
+
+
+    def activate(self):
+        super().activate()
+        self.start_poller(60, self.check_changelog)
