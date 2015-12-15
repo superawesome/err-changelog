@@ -4,7 +4,7 @@ import time
 import requests
 
 class Changelog(BotPlugin):
-    @re_botcmd(pattern=r"^.*#cl.*$", prefixed=False, flags=re.IGNORECASE)
+    @re_botcmd(pattern=r"^(.*)#cl$", prefixed=False, flags=re.IGNORECASE)
     def cl(self, msg, match):
         """put something into the changelog"""
 
@@ -14,7 +14,7 @@ class Changelog(BotPlugin):
                 'criticality': 2,
                 'unix_timestamp': int(time.time()),
                 'category': 'irc',
-                'description': msg.frm.nick + ': ' + match.string
+                'description': msg.frm.nick + ': ' + match.group(1).strip()
         }
         headers = {
                 'Content-Type': 'application/json'
