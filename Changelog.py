@@ -29,6 +29,6 @@ class Changelog(BotPlugin):
         self.log.debug("This is where I should be checking the changelog web app and spewing stuff into #cl")
 
 
-#    def activate(self):
-#        super().activate()
-#        self.start_poller(60, self.check_changelog)
+    def activate(self):
+        super(Changelog, self).activate()
+        self.start_poller(60, self.check_changelog)
