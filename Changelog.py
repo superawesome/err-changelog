@@ -21,7 +21,7 @@ class Changelog(BotPlugin):
                 'Content-Type': 'application/json'
         }
         r = requests.post("https://changelog.allizom.org/api/events", headers=headers, json=data)
-        self.send('#cl', "from %s: %s" % (msg.frm.nick, cl_message), message_type='groupchat')
+        self.send('#cl', "<%s> %s" % (msg.frm.nick, cl_message), message_type='groupchat')
         # return "from %s: %s" % (msg.frm.nick, cl_message)
 
 
