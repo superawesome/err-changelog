@@ -10,17 +10,19 @@ class Changelog(BotPlugin):
 
         # -d "{\"criticality\": 2, \"unix_timestamp\": $WHEN, \"category\": \"puppet\", \"description\": \"$REPO; $REV; $WHODUNIT; $i\"}"
 
+        cl_message = match.group(1).strip()
         data = {
                 'criticality': 2,
                 'unix_timestamp': int(time.time()),
                 'category': 'irc',
-                'description': msg.frm.nick + ': ' + match.group(1).strip()
+                'description': msg.frm.nick + ': ' + cl_message
         }
         headers = {
                 'Content-Type': 'application/json'
         }
         r = requests.post("https://changelog.allizom.org/api/events", headers=headers, json=data)
-        return "changelog: from: %s, crit: %d, time: %d, cat: %s, desc: %s" % (msg.frm.nick, data['criticality'], data['unix_timestamp'], data['category'], data['description'])
+        self.send('#cl', "from %s: %s" % (msg.frm.nick, cl_message), message_type='groupchat')
+        # return "from %s: %s" % (msg.frm.nick, cl_message)
 
 
     def check_changelog(self):
