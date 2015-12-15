@@ -3,8 +3,8 @@ import time
 import requests
 
 class Changelog(BotPlugin):
-    @botcmd
-    def cl(self, msg, args):
+    @re_botcmd(pattern=r"^.*#cl.*$", prefixed=False, flags=re.IGNORECASE)
+    def cl(self, msg, match):
         """put something into the changelog"""
 
         # -d "{\"criticality\": 2, \"unix_timestamp\": $WHEN, \"category\": \"puppet\", \"description\": \"$REPO; $REV; $WHODUNIT; $i\"}"
@@ -13,7 +13,7 @@ class Changelog(BotPlugin):
                 'criticality': 2,
                 'unix_timestamp': int(time.time()),
                 'category': 'irc',
-                'description': msg.frm.nick + ': ' + args
+                'description': msg.frm.nick + ': ' + match
         }
         headers = {
                 'Content-Type': 'application/json'
