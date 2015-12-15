@@ -1,4 +1,5 @@
 from errbot import BotPlugin, botcmd, re_botcmd
+import re
 import time
 import requests
 
