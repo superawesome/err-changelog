@@ -4,7 +4,7 @@ import time
 import requests
 
 class Changelog(BotPlugin):
-    @re_botcmd(pattern=r"^(.*)#cl$", prefixed=False, flags=re.IGNORECASE)
+    @re_botcmd(pattern=r"^(.*)(#cl|\[#[0-9]+\])$", prefixed=False, flags=re.IGNORECASE)
     def cl(self, msg, match):
         """put something into the changelog"""
 
