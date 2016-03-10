@@ -10,7 +10,7 @@ class Changelog(BotPlugin):
 
         # -d "{\"criticality\": 2, \"unix_timestamp\": $WHEN, \"category\": \"puppet\", \"description\": \"$REPO; $REV; $WHODUNIT; $i\"}"
 
-        cl_message = match.group(1).strip()
+        cl_message = match.strip(' #cl')
         data = {
                 'criticality': 2,
                 'unix_timestamp': int(time.time()),
