@@ -23,7 +23,7 @@ class Changelog(BotPlugin):
         r = requests.post("https://changelog.allizom.org/api/events", headers=headers, json=data)
         #munged_name = msg.frm.nick[:1] + '\x030' + msg.frm.nick[1:]  # doesn't work, prints a 0 in the name ... how to do this?
         munged_name = msg.frm.nick  # do nothing for now
-        self.send('#cl', "<%s> %s" % (munged_name, cl_message), message_type='groupchat')
+        self.send(self.build_identifier('#cl'), "<%s> %s" % (munged_name, cl_message), message_type='groupchat')
         # return "from %s: %s" % (msg.frm.nick, cl_message)
 
 
